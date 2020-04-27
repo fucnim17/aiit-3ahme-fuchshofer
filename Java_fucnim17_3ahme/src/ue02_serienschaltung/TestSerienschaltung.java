@@ -12,16 +12,37 @@ package ue02_serienschaltung;
 public class TestSerienschaltung {
     public static void main (String[] args) {
     final Serienschaltung serienschaltung = new Serienschaltung();
+    
     System.out.println("1: " + serienschaltung);
-    serienschaltung.addWiderstand(10);
+    try {
+        serienschaltung.addWiderstand(-10);
+    } catch (InvalidResistorValueException ex) {
+        System.out.println("Fehler aufgetreten bei " + ex.getInvalidValue());
+        ex.printStackTrace(System.out);
+    }
+    
     System.out.println("2: " + serienschaltung);
     serienschaltung.setStrom(0.5);
+    
     System.out.println("3: " + serienschaltung);
-    serienschaltung.addWiderstand(15);
+        try {
+            serienschaltung.addWiderstand(10);
+        } catch (InvalidResistorValueException ex) {
+            System.out.println("Fehler aufgetreten bei " + ex.getInvalidValue());
+            ex.printStackTrace(System.out);
+        }
+        
     System.out.println("4: " + serienschaltung);
-    serienschaltung.addWiderstand(20);
+        try {
+            serienschaltung.addWiderstand(20);
+        } catch (InvalidResistorValueException ex) {
+            System.out.println("Fehler aufgetreten bei " + ex.getInvalidValue());
+            ex.printStackTrace(System.out);
+            
+        }
     System.out.println("5: " + serienschaltung);
     serienschaltung.setStrom(1);
+    
     System.out.println("6: " + serienschaltung);
     }
 }

@@ -25,7 +25,11 @@ public class Serienschaltung {
         }
     }
     
-    public void addWiderstand(double widerstandInOhm) {
+    public void addWiderstand(double widerstandInOhm) throws InvalidResistorValueException {
+        if(widerstandInOhm < 0 || widerstandInOhm > 10E6) {
+            throw new InvalidResistorValueException(widerstandInOhm);
+        }
+        
         if(widerstandsFeld == null) {
             widerstandsFeld = new double[1];
             widerstandsFeld[0] = widerstandInOhm;

@@ -19,6 +19,8 @@ public class TestSerienschaltung {
     } catch (InvalidResistorValueException ex) {
         System.out.println("Fehler aufgetreten bei " + ex.getInvalidValue());
         ex.printStackTrace(System.out);
+        
+        throw new TestFailedException(ex);
     }
  
     System.out.println("2: " + serienschaltung);
@@ -44,5 +46,13 @@ public class TestSerienschaltung {
     serienschaltung.setStrom(1);
     
     System.out.println("6: " + serienschaltung);
+    }
+    
+    public static class TestFailedException extends RuntimeException {
+
+        public TestFailedException(Throwable cause) {
+            super(cause);
+        }
+        
     }
 }

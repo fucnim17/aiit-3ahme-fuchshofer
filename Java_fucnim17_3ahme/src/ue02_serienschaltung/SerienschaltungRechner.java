@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class SerienschaltungRechner {
     public static void main(String[] args) {
-        final Serienschaltung serienschaltung = new Serienschaltung();
+        final SerienschaltungV2 serienschaltung = new SerienschaltungV2();
         Scanner sc = new Scanner(System.in);
         
         while(true) {
@@ -23,7 +23,7 @@ public class SerienschaltungRechner {
                 serienschaltung.setStrom(strom);
                 break;
             } catch (java.util.InputMismatchException ex) {
-            
+                System.exit(1);
             }
         }
             

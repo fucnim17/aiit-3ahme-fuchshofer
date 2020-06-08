@@ -7,10 +7,15 @@ package ue05_koerper;
 
 /**
  *
- * @author Niklas Fucshhfoer
+ * @author Niklas Fuchshfoer
  */
 public class Kugel extends Koerper{
     private double r;
+    
+    public Kugel(double r) {
+        super(0.0);
+        this.r = r;
+    }
 
     public Kugel(double r, double dichte) {
         super(dichte);

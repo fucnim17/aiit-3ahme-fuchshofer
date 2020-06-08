@@ -7,12 +7,12 @@ package ue05_koerper;
 
 /**
  *
- * @author ROG
+ * @author Niklas Fuchshofer
  */
 public abstract class Koerper {
     private double dichte;
-    public double DICHTE_EICHE = 670;
-    public double DICHTE_BUCHE = 690;
+    public static final double DICHTE_EICHE = 670;
+    public static final double DICHTE_BUCHE = 690;
 
     public Koerper(double dichte) {
         this.dichte = dichte;

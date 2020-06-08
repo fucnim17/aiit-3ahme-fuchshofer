@@ -7,12 +7,19 @@ package ue05_koerper;
 
 /**
  *
- * @author ROG
+ * @author Niklas Fuhcshofer
  */
 public class Quader extends Koerper {
     private double a;
     private double b;
     private double h;
+    
+    public Quader (double a, double b, double h) {
+        super(0.0);
+        this.a = a;
+        this.b = b;
+        this.h = h;       
+    }
 
     public Quader(double a, double b, double h, double dichte) {
         super(dichte);

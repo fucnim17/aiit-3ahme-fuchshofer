@@ -11,6 +11,11 @@ package ue05_koerper;
  */
 public class Wuerfel extends Koerper{
     private double a;
+    
+    public Wuerfel(double a) {
+    super(0.0);
+    this.a = a;
+    }
 
     public Wuerfel(double a, double dichte) {
         super(dichte);

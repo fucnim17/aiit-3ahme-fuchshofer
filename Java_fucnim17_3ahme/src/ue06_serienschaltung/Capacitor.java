@@ -11,17 +11,17 @@ package ue06_serienschaltung;
  * @author Niklas Fuchshofer
  */
 public class Capacitor extends Component {
-    public double value;
     
     public Capacitor (double value) {
-        super(id, 0.0, voltage, current);
-        this.value = value;
-        this.id = "C?";
+        super("C?", value);
     }
     
-    public Capacitor (String id, double value, double voltage, double current) {
-        super(id, value, voltage, current);
-        this.value = value;
+    public Capacitor (String id, double value) {
+       super(id, value);
+       
+       if(id.startsWith("C")) {
+           throw new IllegalArgumentException("Invalid ID");
+       }
     }
     
     @Override
@@ -31,6 +31,6 @@ public class Capacitor extends Component {
     
     @Override
     public double energy () {
-        return this.value*this.voltage*this.voltage/2;
+        return getValue() * getVoltage() * getVoltage() / 2;
     }
 }

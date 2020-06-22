@@ -11,17 +11,17 @@ package ue06_serienschaltung;
  * @author Niklas Fuchshofer
  */
 public class Coil extends Component {
-    public double value;
     
     public Coil (double value) {
-        super(id, 0.0, voltage, current);
-        this.value = value;
-        this.id = "L?";
+        super("L?", value);
     }
     
-    public Coil (String id, double value, double voltage, double current) {
-        super(id, value, voltage, current);
-        this.value = value;
+    public Coil (String id, double value) {
+        super(id, value);
+        
+        if(!id.startsWith("L")) {
+            throw new IllegalArgumentException("Invalid ID");
+        }
     }
     
     @Override
@@ -31,6 +31,6 @@ public class Coil extends Component {
 
     @Override
     public double energy () {
-        return this.value*this.current*this.current/2;
+        return getValue() * getCurrent() * getCurrent() / 2;
     }
 }

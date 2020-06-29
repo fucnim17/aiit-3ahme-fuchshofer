@@ -19,9 +19,9 @@ public class Resistor extends Component {
     public Resistor (String id, double value) {
         super(id, value);
         
-        if(id.startsWith("R")) {
+        /*if(id.startsWith("R")) {
             throw new IllegalArgumentException("Invalid ID");
-        }
+        }*/
     }
 
     public void setVoltage () {
@@ -34,7 +34,7 @@ public class Resistor extends Component {
     
     @Override
     public String unit () {
-        return "\\U+2126";
+        return "\u2126";
     }
     
     @Override

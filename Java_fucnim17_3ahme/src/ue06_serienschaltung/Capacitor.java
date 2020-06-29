@@ -19,9 +19,9 @@ public class Capacitor extends Component {
     public Capacitor (String id, double value) {
        super(id, value);
        
-       if(id.startsWith("C")) {
+       /*if(id.startsWith("C")) {
            throw new IllegalArgumentException("Invalid ID");
-       }
+       }*/
     }
     
     @Override

@@ -8,12 +8,13 @@ package ue06_serienschaltung;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 /**
  *
  * @author Niklas Fuchshofer
  */
-public class SerialCircuit extends Component {
+public class SerialCircuit {
     private final List<Component> components = new ArrayList<>();
     private double current;
 
@@ -21,63 +22,82 @@ public class SerialCircuit extends Component {
     }
 
     public SerialCircuit(Collection<Component> components) {
-        this.components.addAll(components);
-        setCurrent(0.0);    
+        this.components.addAll(components);    
     }
 
-    public boolean add(Component c) {
-        return components.add(c);
+    public void add(Component c) {
+        components.add(c);
+        c.setCurrent(current);
     }
 
-    @Override
     public double getCurrent() {
         return current;
     }
 
-    @Override
     public void setCurrent(double current) {
         this.current = current;
+        for (Component component : components) {
+            component.setCurrent(current);
+        }
     }
     
     public double totalVoltage() {
-        return getVoltage();
+        double rv = 0.0;
+        for (Component component : components) {
+            rv += component.getVoltage();
+        }
+        return rv;
     }
     
     public double totalPower() {
-        return power();
+        double rv = 0.0;
+        for (Component component : components) {
+            rv += component.power();
+        }
+        return rv;
     }
     
     public double totalEnergy() {
-        return energy();
+         double rv = 0.0;
+        for (Component component : components) {
+            rv += component.energy();
+        }
+        return rv;
     }
 
+    public Component component (String id) {
+        for (Component component : components) {
+            if (component.getId().equals(id)) {
+                return component;
+            }
+        }
+        return null;
+    }
     
+    public Collection<Component> getComponents () {
+        return components;
+    }
     
-    
-    
-    public Object[] toArray() {
-        return components.toArray();
+    public Component [] toArray () {
+        final Component [] rv = new Component[components.size()];
+        return components.toArray(rv);
     }
 
-    @Override
-    public String toString() {
-        return "SerialCircuit{" + "components=" + components + '}';
+   @Override
+    public String toString () {
+        final StringBuilder sb = new  StringBuilder();
+        sb.append("SerialCircuit (").append(components.size()).append(" Components): { ");
+        boolean first = true;
+        for (Component c : components) {
+            if (first) {
+                first = false;
+            } else {
+                sb.append(", ");
+            }
+            sb.append(c.getId()).append("=").append(c.formattedValue(Locale.ENGLISH));
+        }
+        sb.append(" }");
+        return sb.toString();
     }
-
-    
-    
-    
-
-    @Override
-    public String unit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public double energy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
- 
-    
     
 }

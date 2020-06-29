@@ -19,9 +19,9 @@ public class Coil extends Component {
     public Coil (String id, double value) {
         super(id, value);
         
-        if(!id.startsWith("L")) {
+        /*if(!id.startsWith("L")) {
             throw new IllegalArgumentException("Invalid ID");
-        }
+        }*/
     }
     
     @Override
